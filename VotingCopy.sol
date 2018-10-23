@@ -38,7 +38,7 @@ contract Voting{
         return votesReceived[candidate];
     }
     
-    function voteForCandidate(bytes32 candidtae, uint votesInTokens) public{
+    function voteForCandidate(byte32 candidtae, uint votesInTokens) public{
         uint index = indexOfCandidate(candidate);
         require(index!=uint(-1));
         if(voterInfo[msg.sender].tokensUsedPerCandidate.length==0){
@@ -61,7 +61,7 @@ contract Voting{
         return uint(-1);
     }
     
-    function totalTokensUsed(uint _tokensUsedPerCandidate) private pure returns(uint) {
+    function totalTokensUsed(_tokensUsedPerCandidate) private pure returns(uint) {
         uint total = 0;
         for(uint i=0; i<_tokensUsedPerCandidate.length; i++){
             total += _tokensUsedPerCandidate[i];

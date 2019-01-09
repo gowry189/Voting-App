@@ -38,7 +38,11 @@ contract Voting{
         return votesReceived[candidate];
     }
     
+<<<<<<< HEAD
     function voteForCandidate(bytes32 candidtae, uint votesInTokens) public{
+=======
+    function voteForCandidate(byte32 candidtae, uint votesInTokens) public{
+>>>>>>> 0228fad830bf5d6a30f2519b1bf22073ca8f1e9e
         uint index = indexOfCandidate(candidate);
         require(index!=uint(-1));
         if(voterInfo[msg.sender].tokensUsedPerCandidate.length==0){
@@ -61,7 +65,11 @@ contract Voting{
         return uint(-1);
     }
     
+<<<<<<< HEAD
     function totalTokensUsed(uint _tokensUsedPerCandidate) private pure returns(uint) {
+=======
+    function totalTokensUsed(_tokensUsedPerCandidate) private pure returns(uint) {
+>>>>>>> 0228fad830bf5d6a30f2519b1bf22073ca8f1e9e
         uint total = 0;
         for(uint i=0; i<_tokensUsedPerCandidate.length; i++){
             total += _tokensUsedPerCandidate[i];

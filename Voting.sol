@@ -12,8 +12,7 @@ contract Voting{
     //mapping to store candidate details
     mapping(uint => Candidate) public candidateDetails;
     
-    event votingSuccess(uint indexed _candidateId);
-    function addCandidate(string _nameCandidate) public {
+    function addCandidate(string _nameCandidate) private {
         totalCandidates++;
         candidateDetails[totalCandidates] = Candidate(totalCandidates, _nameCandidate,0);
     }
@@ -22,6 +21,10 @@ contract Voting{
         require(!voters[msg.sender] && _candidateId>0 && _candidateId <= totalCandidates);
         voters[msg.sender] = true;
         candidateDetails[_candidateId].totalVote++;
-        votingSuccess(_candidateId);
+    
+    }
+    function Voting() public {
+        addCandidate("Chandler Bing");
+        addCandidate("Monica Geller");
     }
 }

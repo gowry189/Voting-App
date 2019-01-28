@@ -2,13 +2,25 @@ contract Voting{
     /*a strucute that defines the details of
     the candidate participating in the election*/
     struct Candidate{
-        uint id;
-        string name;
+        uint candidateId;
+        string nameCandidate;
         uint totalVote;
     }
-    uint totalCandadates;
+    uint totalCandidates;
     //mapping to store the voters
     mapping(address => bool) public voters;
     //mapping to store candidate details
-    mapping(address => Candidate) public candidateDetails;
+    mapping(uint => Candidate) public candidateDetails;
+    
+    function addCandidate(string _nameCandidate) public {
+        totalCandidates++;
+        candidateDetails[totalCandidates] = Candidate(totalCandidates, _nameCandidate,0);
+    }
+    
+    function vote(uint _candidateId) public {
+        require(!voters[msg.sender] && _candidateId>0 && _candidateId <= totalCandidates);
+        voters[msg.sender] = true;
+        candidateDetails[_candidateId].totalVote++;
+        
+    }
 }
